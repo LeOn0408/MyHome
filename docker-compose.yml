@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  myhomeweb:
+    image: ${DOCKER_REGISTRY-}myhomeweb
+    build:
+      context: .
+      dockerfile: MyHomeWeb/MyHomeWeb/Dockerfile
+    ports:
+      - "5060:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - YANDEX_OAUTH_CLIENT_ID=${YANDEX_OAUTH_CLIENT_ID}
+      - DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
