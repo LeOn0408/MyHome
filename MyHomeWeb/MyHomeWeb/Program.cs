@@ -17,8 +17,8 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    app.UseHsts();               // 🔐 Только для продакшена
-    app.UseHttpsRedirection();  // 🔐 Только если сертификат указан
+    app.UseHsts();      
+    app.UseHttpsRedirection();
 }
 
 app.UseHttpsRedirection();
