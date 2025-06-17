@@ -1,4 +1,4 @@
-version: '3.8'
+п»їversion: '3.8'
 
 services:
   myhomeweb:
@@ -11,7 +11,7 @@ services:
       - ./certs:/https:ro
     ports:
       - "443:443"
-      - "80:80" # опционально если хочешь http -> https редирект
+      - "80:80"
 
   postgres:
     image: postgres:17
