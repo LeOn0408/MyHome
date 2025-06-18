@@ -8,6 +8,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -19,6 +20,13 @@ else
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     app.UseHsts();      
     app.UseHttpsRedirection();
+}
+
+
+var basePath = builder.Configuration["BasePath"];
+if (!string.IsNullOrEmpty(basePath))
+{
+    app.UsePathBase(basePath);
 }
 
 app.UseHttpsRedirection();

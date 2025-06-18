@@ -14,6 +14,8 @@ services:
       - DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
     depends_on:
       - postgres
+    volumes:
+       - ./Plugins:/app/Plugins
 
   postgres:
     image: postgres:17
