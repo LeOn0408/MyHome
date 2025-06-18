@@ -23,12 +23,6 @@ else
 }
 
 
-var basePath = builder.Configuration["BasePath"];
-if (!string.IsNullOrEmpty(basePath))
-{
-    app.UsePathBase(basePath);
-}
-
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
